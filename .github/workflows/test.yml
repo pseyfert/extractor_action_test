@@ -26,5 +26,5 @@ jobs:
         uses: pseyfert/extractor_action@master
         with:
           exe: /bin/echo
-          build_path: ./build
+          build_path: ./build/compile_commands.json
 
