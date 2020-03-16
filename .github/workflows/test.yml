@@ -22,6 +22,6 @@ jobs:
       - name: extractor test
         uses: pseyfert/extractor_action@master
         with:
-          exe: "echo"
-          build_path: "build"
+          exe: echo
+          build_path: build
 
