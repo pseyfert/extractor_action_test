@@ -10,7 +10,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
         with:
-          repository: https://github.com/pseyfert/tmva-branch-adder
+          repository: pseyfert/tmva-branch-adder
       - name: configure
         uses: nicledomaS/cmake_build_action@v1
         with:
