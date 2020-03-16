@@ -19,6 +19,9 @@ jobs:
         uses: nicledomaS/cmake_build_action@v1
         with:
           cmake_args: -DCMAKE_EXPORT_COMPILE_COMMANDS=YES;
+      - name: dump
+        run: |
+          cat build/compile_commands.json
       - name: extractor test
         uses: pseyfert/extractor_action@master
         with:
