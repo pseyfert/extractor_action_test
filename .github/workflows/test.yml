@@ -5,8 +5,19 @@ on:
 jobs:
   testrun:
     runs-on: ubuntu-latest
+    container: rootproject/root-ubuntu16
     steps:
+      - name: checkout
+        uses: actions/checkout@master
+        with:
+          repository: https://github.com/pseyfert/tmva-branch-adder
+      - name: configure
+        uses: nicledomaS/cmake_build_action@v1
+        with:
+          cmake_args: -DCMAKE_EXPORT_COMPILE_COMMANDS=YES;
       - name: extractor test
         uses: pseyfert/extractor_action@master
         with:
-          demonstrator: "toiletpaper"
+          exe: "echo"
+          build_path: "build"
+
