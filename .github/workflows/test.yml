@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     container: rootproject/root-ubuntu16
     steps:
+      - name: bodge permissions
+        run: |
+          sudo mkdir -p /__w
+          sudo chmod -R 777 /__w
       - name: checkout
         uses: actions/checkout@master
         with:
