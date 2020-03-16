@@ -27,4 +27,5 @@ jobs:
         with:
           exe: /bin/echo
           build_path: ./build/compile_commands.json
+          append_args: ENDOFLINE
 
