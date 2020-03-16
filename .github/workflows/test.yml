@@ -1,0 +1,12 @@
+name: tryanderror
+on:
+  push:
+
+jobs:
+  testrun:
+    runs-on: ubuntu-latest
+    steps:
+      - name: extractor test
+        uses: pseyfert/extractor_action@master
+        with:
+          demonstrator: "toiletpaper"
