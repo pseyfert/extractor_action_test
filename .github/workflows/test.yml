@@ -7,10 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     container: rootproject/root-ubuntu16
     steps:
-      - name: bodge permissions
+      - name: bodge permissions and install build dependencies
         run: |
           sudo mkdir -p /__w
           sudo chmod -R 777 /__w
+          apt-get update
+          apt-get upgrade -y
+          apt-get install -y ninja-build
       - name: checkout
         uses: actions/checkout@master
         with:
@@ -18,9 +21,10 @@ jobs:
       - name: configure
         uses: nicledomaS/cmake_build_action@v1
         with:
-          cmake_args: -DCMAKE_EXPORT_COMPILE_COMMANDS=YES;
+          cmake_args: -DCMAKE_EXPORT_COMPILE_COMMANDS=YES;-GNinja;-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
       - name: dump
         run: |
+          readlink -f build/compile_commands.json
           cat build/compile_commands.json
       - name: extractor test
         uses: pseyfert/extractor_action@master
