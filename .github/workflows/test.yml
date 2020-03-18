@@ -36,10 +36,12 @@ jobs:
           readlink -f build/compile_commands.json
           echo "cat build/compile_commands.json"
           cat build/compile_commands.json
-      - name: extractor test
+      - name: extractor test (preprocess everything rather than compiling)
         uses: pseyfert/extractor_action@master
         with:
-          exe: /bin/echo
           build_path: ./build/compile_commands.json
-          append_args: ENDOFLINE
+          replace_args: -c=-E
+      - name: check preprocessing output
+        run: |
+          cat build/CMakeFiles/tmva-branch-adder.dir/src/blacklist.cpp.o
 
