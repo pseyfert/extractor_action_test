@@ -40,7 +40,7 @@ jobs:
         uses: pseyfert/extractor_action@master
         with:
           build_path: ./build/compile_commands.json
-          replace_args: -c=-E
+          replace_args: ^-c$=-E
       - name: check preprocessing output
         run: |
           cat build/CMakeFiles/tmva-branch-adder.dir/src/blacklist.cpp.o
