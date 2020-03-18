@@ -24,6 +24,8 @@ jobs:
           cmake_args: -DCMAKE_EXPORT_COMPILE_COMMANDS=YES;-GNinja;-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
       - name: dump
         run: |
+          pwd
+          ls -l build/compile_commands.json
           readlink -f build/compile_commands.json
           cat build/compile_commands.json
       - name: extractor test
